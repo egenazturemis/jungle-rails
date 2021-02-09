@@ -52,4 +52,24 @@ RSpec.describe User, type: :model do
       expect(@user.errors.messages[:password]).to eq ["is too short (minimum is 3 characters)"]
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it "authenticates the user based on email address and password" do
+      @user = User.new({name: 'Egenaz Turemis', email: 'egenazturemis@gmail.com', password: 'lhl', password_confirmation: 'lhl'})
+      @user.save
+      expect(User.authenticate_with_credentials('egenazturemis@gmail.com', 'lhl')).to eq @user
+    end
+
+    xit "authenticates the user even if the user types in the wrong case for their email" do
+      @user = User.new({name: 'Egenaz Turemis', email: 'egenazturemis@gmail.com', password: 'lhl', password_confirmation: 'lhl'})
+      @user.save
+      expect(User.authenticate_with_credentials('EGENAZturemis@gmail.com', 'lhl')).to eq @user
+    end
+
+    xit "authenticates the user even if the user types in spaces before/after their email" do
+      @user = User.new({name: 'Egenaz Turemis', email: 'egenazturemis@gmail.com', password: 'lhl', password_confirmation: 'lhl'})
+      @user.save
+      expect(User.authenticate_with_credentials(' egenazturemis@gmail.com  ', 'lhl')).to eq @user
+    end
+  end
 end

@@ -5,4 +5,14 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :password, presence: true, length: { minimum: 3 }
   validates :password_confirmation, presence: true 
+
+ 
+  def self.authenticate_with_credentials(email, password)  # class methods have self.
+    user = User.find_by_email(email)
+    if user && user.authenticate(password) # authenticate comes from the has_secure_password gem
+      user
+    else
+      nil
+    end
+  end
 end
