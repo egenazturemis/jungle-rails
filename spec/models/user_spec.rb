@@ -60,16 +60,16 @@ RSpec.describe User, type: :model do
       expect(User.authenticate_with_credentials('egenazturemis@gmail.com', 'lhl')).to eq @user
     end
 
-    xit "authenticates the user even if the user types in the wrong case for their email" do
-      @user = User.new({name: 'Egenaz Turemis', email: 'egenazturemis@gmail.com', password: 'lhl', password_confirmation: 'lhl'})
-      @user.save
-      expect(User.authenticate_with_credentials('EGENAZturemis@gmail.com', 'lhl')).to eq @user
-    end
-
-    xit "authenticates the user even if the user types in spaces before/after their email" do
+    it "authenticates the user even if the user types in spaces before/after their email" do
       @user = User.new({name: 'Egenaz Turemis', email: 'egenazturemis@gmail.com', password: 'lhl', password_confirmation: 'lhl'})
       @user.save
       expect(User.authenticate_with_credentials(' egenazturemis@gmail.com  ', 'lhl')).to eq @user
+    end
+    
+    it "authenticates the user even if the user types in the wrong case for their email" do
+      @user = User.new({name: 'Egenaz Turemis', email: 'egenazturemis@gmail.com', password: 'lhl', password_confirmation: 'lhl'})
+      @user.save
+      expect(User.authenticate_with_credentials('EGENAZturemis@gmail.com', 'lhl')).to eq @user
     end
   end
 end
