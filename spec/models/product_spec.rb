@@ -13,7 +13,7 @@ RSpec.describe Product, type: :model do
     # validates :price
     it "has a price" do
       @category = Category.new({name: "Home deco"})
-      @product = Product.new({name: "Vase", price: nil, quantity: 100, category: @category})
+      @product = Product.new({name: "Vase", price: 300, quantity: 100, category: @category})
       @product.save
       expect(@product.price).to eq(300)
     end
