@@ -2,6 +2,17 @@
 
 A mini e-commerce application built with Rails 4.2.
 
+## Screenshots
+
+!["The products page"](https://github.com/egenazturemis/jungle-rails/blob/master/docs/products.png?raw=true)
+Home page of Jungle with all the listed products, available or sold-out. 
+
+!["The shopping cart"](https://github.com/egenazturemis/jungle-rails/blob/master/docs/cart.png?raw=true)
+In the shopping cart, users can change the quantity of added products and pay with a credit card via Stripe.
+
+!["Admin products page"](https://github.com/egenazturemis/jungle-rails/blob/master/docs/admin.png?raw=true)
+Authenticated admin can add/delete products.
+
 
 ## Setup
 
